@@ -32,11 +32,12 @@ public class PlayerMovement : MonoBehaviour
         switch(state)
         {
             case PlayerState.inPropulsion:
-                if (Input.GetKeyUp(KeyCode.Space))
+                if (Input.GetKeyUp(KeyCode.Space) || currentStamina <= 0)
                 {
                     state = PlayerState.notInPropultion;
                 }
                 StaminaUpdate(-1);
+
             break;
 
             case PlayerState.notInPropultion:

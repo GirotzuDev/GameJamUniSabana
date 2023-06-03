@@ -20,11 +20,12 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         state = PlayerState.notInPropultion;
         staminaSlider = GameObject.Find("Stamina").GetComponent<Image>();
-        staminaSlider.fillAmount = 1f;
+        currentStamina = maxStamina;
     }
 
     private void Update()
     {
+        Debug.Log(currentStamina);
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
         
@@ -65,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
     {
         
         currentStamina = currentStamina + (staminaConsumptionRate * Time.deltaTime) * scalar;
-        Debug.Log(currentStamina);
 
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         staminaSlider.fillAmount = currentStamina / maxStamina;

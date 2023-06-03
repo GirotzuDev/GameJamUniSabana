@@ -35,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.gameStates == GameStates.gameOver || GameManager.Instance.gameStates == GameStates.gameIdle) return;
+        if(currentStamina<=0)
+        {
+            GameManager.Instance.gameStates = GameStates.gameOver;
+        }
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
         

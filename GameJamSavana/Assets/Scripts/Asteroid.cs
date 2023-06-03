@@ -7,7 +7,7 @@ public class Asteroid : MonoBehaviour
 
     private int currentTargetIndex = 0;
     private Transform currentTarget;
-    public float damage;
+    public float damage = 30f;
 
     private void Start()
     {

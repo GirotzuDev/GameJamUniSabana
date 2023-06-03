@@ -27,8 +27,10 @@ public class PlayerMovement : MonoBehaviour
         state = PlayerState.notInPropultion;
         staminaSlider = GameObject.Find("Stamina").GetComponent<Image>();
         currentStamina = maxStamina;
+        staminaSlider.fillAmount = currentStamina;
         plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
         plantingTime = 0;
+
     }
 
     private void Update()
@@ -100,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "Asteroid")
         {
             currentStamina-=col.gameObject.GetComponent<Asteroid>().damage;
+            StaminaUpdate(-1);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -136,6 +139,7 @@ public enum PlayerState
 {
     inPropulsion,
     notInPropultion,
-    planting
+    planting,
+    beenAbsorved
 }
 }

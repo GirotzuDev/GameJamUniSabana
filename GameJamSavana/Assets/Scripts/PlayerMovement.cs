@@ -15,17 +15,24 @@ public class PlayerMovement : MonoBehaviour
     public float currentStamina;
     public Image staminaSlider;
 
+    public float maxPlantingTime = 100f; 
+    public float plantingRate = 10f; // Stamina consumption rate per second    
+    public float plantingTime;
+    public Image plantingSliter;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         state = PlayerState.notInPropultion;
         staminaSlider = GameObject.Find("Stamina").GetComponent<Image>();
         currentStamina = maxStamina;
+        plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
+        plantingTime = 0;
     }
 
     private void Update()
     {
-        Debug.Log(currentStamina);
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
         
@@ -45,6 +52,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     state = PlayerState.inPropulsion;
                 }
+            break;
+
+            case PlayerState.planting:
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    state = PlayerState.notInPropultion;
+                }
+                PlantingUpdate(1);
             break;
         }
     }
@@ -72,9 +87,55 @@ public class PlayerMovement : MonoBehaviour
         staminaSlider.fillAmount = currentStamina / maxStamina;
     }
 
+    private void PlantingUpdate(int scalar)
+    {
+
+        plantingTime = plantingTime + (plantingRate * Time.deltaTime) * scalar;
+        plantingTime = Mathf.Clamp(plantingTime, 0f, maxPlantingTime);
+        plantingSliter.fillAmount = plantingTime / maxPlantingTime;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Asteroid")
+        {
+            currentStamina-=col.gameObject.GetComponent<Asteroid>().damage;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartPlanting();
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Planet")
+        {
+            state = PlayerState.notInPropultion;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Planet")
+        {
+            StaminaUpdate(1);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                StartPlanting();
+            }
+        }
+    }
+
+    void StartPlanting()
+    {
+        plantingTime = 0;
+        state = PlayerState.planting;
+    }
 public enum PlayerState
 {
     inPropulsion,
-    notInPropultion
+    notInPropultion,
+    planting
 }
 }

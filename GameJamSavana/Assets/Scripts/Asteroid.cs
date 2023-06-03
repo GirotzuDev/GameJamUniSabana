@@ -7,6 +7,7 @@ public class Asteroid : MonoBehaviour
 
     private int currentTargetIndex = 0;
     private Transform currentTarget;
+    public float damage;
 
     private void Start()
     {
@@ -27,14 +28,26 @@ public class Asteroid : MonoBehaviour
             if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
             {
                 // Set the next target
-                currentTargetIndex++;
-                if (currentTargetIndex >= targetObjects.Length)
-                {
-                    Destroy(this.gameObject);
-                    //currentTargetIndex = 0;
-                }
-                currentTarget = targetObjects[currentTargetIndex].transform;
+                int nextTarget = Random.Range(0, targetObjects.Length);
+                currentTarget = targetObjects[nextTarget].transform;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Ignore collisions with objects tagged as "Asteroid"
+        if (other.CompareTag("Asteroid"))
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
         }
     }
 

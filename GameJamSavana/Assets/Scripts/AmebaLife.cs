@@ -27,6 +27,7 @@ public class AmebaLife : MonoBehaviour
         if(currentLife <=0)
         {
             GameManager.Instance.gameStates = GameStates.gameOver;
+            GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
         }
     }
 }

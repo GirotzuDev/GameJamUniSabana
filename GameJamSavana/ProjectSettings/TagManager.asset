@@ -8,6 +8,8 @@ TagManager:
   - Planet
   - point
   - CenterPlayer
+  - GameOverPanel
+  - WinPanel
   layers:
   - Default
   - TransparentFX

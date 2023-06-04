@@ -25,7 +25,7 @@ public class InitialMenu : MonoBehaviour
     public void PlayGame()
     {
         // Cargar la escena del juego principal
-        SceneManager.LoadScene("MainSceneUIChanges");
+        SceneManager.LoadScene("IntegrationTestScene");
     }
 
     public void ShowOptions()
@@ -37,6 +37,7 @@ public class InitialMenu : MonoBehaviour
     public void HideOptions()
     {
         optionsPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     public void ShowCredits()
@@ -48,6 +49,7 @@ public class InitialMenu : MonoBehaviour
     public void HideCredits()
     {
         creditsPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     public void UpdateVolume(float volume)

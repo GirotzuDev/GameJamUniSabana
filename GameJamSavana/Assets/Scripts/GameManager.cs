@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         if(planetLess <=0)
         {
             gameStates = GameStates.gameOver;
+            GameObject.FindWithTag("WinPanel").gameObject.SetActive(true);
         }
     }
 }

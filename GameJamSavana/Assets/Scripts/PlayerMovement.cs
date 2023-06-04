@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private Planet actualPlanet;
     [SerializeField]
     private AmebaLife ameba; 
+
+    public Animator playerAnimator; 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
         plantingTime = 0;
         ameba = gameObject.GetComponent<AmebaLife>();
+        playerAnimator = GetComponent<Animator>(); 
     }
 
     private void Update()
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
+
         
         switch(state)
         {
@@ -66,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             break;
 
             case PlayerState.onPlanet:
+                playerAnimator.SetTrigger("landing");
                 Debug.Log(plantingSliter.fillAmount);
                 StaminaUpdate(1);
                 if (Input.GetKeyDown(KeyCode.E))
@@ -101,11 +106,12 @@ public class PlayerMovement : MonoBehaviour
         switch(state)
         {
             case PlayerState.inPropulsion:
+                playerAnimator.SetTrigger("propulsion");
                 rb.AddForce(transform.up * forwardForce, ForceMode2D.Force);
             break;
 
             case PlayerState.notInPropultion:
-
+                playerAnimator.SetTrigger("idle");
             break;
         }
     }

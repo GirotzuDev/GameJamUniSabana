@@ -741,29 +741,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3061100829247935784, guid: 1106e1a85872c1c45b59896f175d6f2f, type: 3}
   m_PrefabInstance: {fileID: 4546797332470797341}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2048295241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6050190142262042028, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
-  m_PrefabInstance: {fileID: 6050190142696347057}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2048295246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6050190142262042030, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
   m_PrefabInstance: {fileID: 6050190142696347057}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2048295247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048295241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f7988bd78773ed49ae6b342b563d084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerDuration: 60
 --- !u!1 &2104879628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,10 +1075,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6050190142262042001, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6050190142262042028, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
       propertyPath: m_Name
       value: Player

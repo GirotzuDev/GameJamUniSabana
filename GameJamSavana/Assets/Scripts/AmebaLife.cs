@@ -38,9 +38,9 @@ public class AmebaLife : MonoBehaviour
         currentLife-= Time.deltaTime;
         currentLife = Mathf.Clamp(currentLife, 0f, timerDuration);
         amebaLifeSliter.fillAmount = currentLife / timerDuration;
+        Debug.Log(currentLife);
         if(currentLife <=0)
         {
-            GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
             GameManager.Instance.gameStates = GameStates.gameOver;
         }
     }

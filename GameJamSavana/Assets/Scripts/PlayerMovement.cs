@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool planting = false;
 
     private Planet actualPlanet;
+
+    public Animator playerAnimator; 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         staminaSlider.fillAmount = currentStamina;
         plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
         plantingTime = 0;
-
+        playerAnimator = GetComponent<Animator>(); 
     }
 
     private void Update()
@@ -40,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
         if(currentStamina<=0)
         {
             GameManager.Instance.gameStates = GameStates.gameOver;
-            GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
+            //GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
         }
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
+
         
         switch(state)
         {
@@ -64,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
             break;
 
             case PlayerState.onPlanet:
+                playerAnimator.SetTrigger("landing");
                 Debug.Log(plantingSliter.fillAmount);
                 StaminaUpdate(1);
                 if (Input.GetKeyDown(KeyCode.E))
@@ -98,11 +102,12 @@ public class PlayerMovement : MonoBehaviour
         switch(state)
         {
             case PlayerState.inPropulsion:
+                playerAnimator.SetTrigger("propulsion");
                 rb.AddForce(transform.up * forwardForce, ForceMode2D.Force);
             break;
 
             case PlayerState.notInPropultion:
-
+                playerAnimator.SetTrigger("idle");
             break;
         }
     }

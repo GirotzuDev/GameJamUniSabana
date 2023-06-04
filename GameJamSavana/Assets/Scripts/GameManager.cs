@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    private List<Planet> planetList; 
+    public int planetLess;
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -35,11 +36,16 @@ public class GameManager : MonoBehaviour
 
     void GameStart()
     {
-
+        planetList = new List<Planet>(FindObjectsOfType<Planet>());
+        planetLess = planetList.Count;
     }
 
     void Update()
     {
+        if(planetLess <=0)
+        {
+            gameStates = GameStates.gameOver;
+        }
     }
 }
 

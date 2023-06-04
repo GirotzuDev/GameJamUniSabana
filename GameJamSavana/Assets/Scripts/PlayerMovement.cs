@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 5f;
 
     private Rigidbody2D rb;
-
+    [SerializeField]
     private PlayerState state;
     
     public float maxStamina = 100f; 
@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
     public float plantingRate = 10f; // Stamina consumption rate per second    
     public float plantingTime;
     public Image plantingSliter;
+    private bool planting = false;
 
-
+    private Planet actualPlanet;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,12 +62,32 @@ public class PlayerMovement : MonoBehaviour
                 }
             break;
 
-            case PlayerState.planting:
+            case PlayerState.onPlanet:
+                Debug.Log(plantingSliter.fillAmount);
+                StaminaUpdate(1);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    StartPlanting(true);
+                }
                 if (Input.GetKeyUp(KeyCode.E))
                 {
-                    state = PlayerState.notInPropultion;
+                    StartPlanting(false);
                 }
-                PlantingUpdate(1);
+                if(planting)
+                {
+                    PlantingUpdate(1);
+                }
+                if(plantingSliter.fillAmount>=1)
+                {
+                    Debug.Log("Setear gracity");
+                    plantingSliter.fillAmount = 0;
+                    plantingTime = 0;
+                    //actualPlanet.SetGravityMode();
+                    GameManager.Instance.planetLess-=1;
+                    Destroy(actualPlanet);
+                    state = PlayerState.notInPropultion;
+                    
+                }
             break;
         }
     }
@@ -96,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlantingUpdate(int scalar)
     {
-
+        Debug.Log("Planatando ando");
         plantingTime = plantingTime + (plantingRate * Time.deltaTime) * scalar;
         plantingTime = Mathf.Clamp(plantingTime, 0f, maxPlantingTime);
         plantingSliter.fillAmount = plantingTime / maxPlantingTime;
@@ -109,9 +130,12 @@ public class PlayerMovement : MonoBehaviour
             currentStamina-=col.gameObject.GetComponent<Asteroid>().damage;
             StaminaUpdate(-1);
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartPlanting();
+        if (col.gameObject.tag == "Planet")
+        {   
+            Debug.Log("Cogere planeta");
+            actualPlanet = col.gameObject.GetComponent<Planet>();
+            Debug.Log(actualPlanet);
+            state = PlayerState.onPlanet;
         }
     }
 
@@ -123,28 +147,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Planet")
-        {
-            StaminaUpdate(1);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartPlanting();
-            }
-        }
-    }
-
-    void StartPlanting()
+    void StartPlanting(bool isPlanting)
     {
         plantingTime = 0;
-        state = PlayerState.planting;
+        planting = isPlanting;
     }
 public enum PlayerState
 {
     inPropulsion,
     notInPropultion,
-    planting,
+    onPlanet,
     beenAbsorved
 }
 }

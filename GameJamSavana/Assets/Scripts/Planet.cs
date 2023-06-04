@@ -15,4 +15,17 @@ public class Planet : CoreGravity
         minForce = minCoreForce;
         maxForce = maxCoreForce;
     }
+
+    private void SetGravity(float min, float max)
+    {
+        float tmp;
+        tmp = maxForce;
+        maxForce = -minForce;
+        minForce = -tmp;
+    }
+
+    public void SetGravityMode()
+    {
+        SetGravity(maxForce,minForce);   
+    }
 }

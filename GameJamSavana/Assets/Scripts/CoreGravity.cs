@@ -26,8 +26,7 @@ public class CoreGravity : MonoBehaviour
         {
             float normalizedDistance = Mathf.InverseLerp(0f, influenceRange, distanceToPlayer);
             float forceMagnitude = Mathf.Lerp(minForce, maxForce, normalizedDistance);
-            Debug.Log("------------.--------------.-----------");
-            Debug.Log(forceMagnitude);
+
             Vector2 pullDirection = (transform.position - player.position).normalized;
             Vector2 pullForce = pullDirection * forceMagnitude;
 

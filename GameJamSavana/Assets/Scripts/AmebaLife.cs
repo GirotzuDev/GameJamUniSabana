@@ -23,7 +23,6 @@ public class AmebaLife : MonoBehaviour
     {
         currentLife-= Time.deltaTime;
         currentLife = Mathf.Clamp(currentLife, 0f, timerDuration);
-        Debug.Log(currentLife / timerDuration);
         amebaLifeSliter.fillAmount = currentLife / timerDuration;
         if(currentLife <=0)
         {

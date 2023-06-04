@@ -5,27 +5,39 @@ public class CoreGravity : MonoBehaviour
     protected Transform player;
     Rigidbody2D playerBody;
     protected float influenceRange;
-    protected float intensity;
     protected float distanceToPlayer;
-    Vector2 pullForce;
+
+    protected float minForce;
+    protected float maxForce;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        player =  GameObject.Find("Player").gameObject.GetComponent<Transform>();
-        playerBody = player.GetComponent<Rigidbody2D>();   
+        player = GameObject.Find("Player").transform;
+        playerBody = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         distanceToPlayer = Vector2.Distance(player.position, transform.position);
+
         if (distanceToPlayer <= influenceRange)
         {
-            pullForce = (transform.position - player.position).normalized / distanceToPlayer * intensity;
+            float normalizedDistance = Mathf.InverseLerp(0f, influenceRange, distanceToPlayer);
+            float forceMagnitude = Mathf.Lerp(minForce, maxForce, normalizedDistance);
+            Debug.Log("------------.--------------.-----------");
+            Debug.Log(forceMagnitude);
+            Vector2 pullDirection = (transform.position - player.position).normalized;
+            Vector2 pullForce = pullDirection * forceMagnitude;
+
             playerBody.AddForce(pullForce, ForceMode2D.Force);
         }
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, influenceRange);
+    }
 }

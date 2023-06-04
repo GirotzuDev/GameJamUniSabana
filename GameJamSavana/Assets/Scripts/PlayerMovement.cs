@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if(currentStamina<=0)
         {
             GameManager.Instance.gameStates = GameStates.gameOver;
+            GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
         }
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);

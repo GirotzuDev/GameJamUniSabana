@@ -51,7 +51,7 @@ public class Asteroid : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+/*
     private void OnDrawGizmos()
     {
         // Draw raycasts between the target objects
@@ -72,4 +72,5 @@ public class Asteroid : MonoBehaviour
             Gizmos.DrawLine(transform.position, currentTarget.position);
         }
     }
+*/
 }

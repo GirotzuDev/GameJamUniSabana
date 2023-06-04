@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6050190142262042030, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.9
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6050190142262042030, guid: c29a3507645fc29488ee517d2ab42395, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2197,7 +2197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907323783656774448, guid: 9e22180e07035f042b215314ab572315, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.449999
+      value: 0.8500004
       objectReference: {fileID: 0}
     - target: {fileID: 5907323783656774448, guid: 9e22180e07035f042b215314ab572315, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2409,6 +2409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4525638908688004551, guid: 47c46e2179edc51429b2b7fb4683cc42, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4798113107629738163, guid: 47c46e2179edc51429b2b7fb4683cc42, type: 3}
       propertyPath: m_TagString
       value: WinPanel

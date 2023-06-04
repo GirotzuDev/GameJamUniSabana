@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool planting = false;
 
     private Planet actualPlanet;
+    [SerializeField]
+    private AmebaLife ameba; 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         staminaSlider.fillAmount = currentStamina;
         plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
         plantingTime = 0;
-
+        ameba = gameObject.GetComponent<AmebaLife>();
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if(currentStamina<=0)
         {
             GameManager.Instance.gameStates = GameStates.gameOver;
-            GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
+           // GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
         }
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.forward * rotationInput * rotationSpeed * Time.deltaTime*-1);
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
                     plantingTime = 0;
                     //actualPlanet.SetGravityMode();
                     GameManager.Instance.planetLess-=1;
+                    ameba.state = "planted";
                     Destroy(actualPlanet);
                     state = PlayerState.notInPropultion;
                     
@@ -137,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
             actualPlanet = col.gameObject.GetComponent<Planet>();
             Debug.Log(actualPlanet);
             state = PlayerState.onPlanet;
+            ameba.state = "planting";
         }
     }
 

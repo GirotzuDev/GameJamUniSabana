@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     private List<Planet> planetList; 
     public int planetLess;
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -45,7 +48,12 @@ public class GameManager : MonoBehaviour
         if(planetLess <=0)
         {
             gameStates = GameStates.gameOver;
-            GameObject.FindWithTag("WinPanel").gameObject.SetActive(true);
+            winPanel.SetActive(true);
+        }
+        if(gameStates == GameStates.gameOver )
+        {
+            Debug.Log("Voy a perder");
+            losePanel.SetActive(true);
         }
     }
 }

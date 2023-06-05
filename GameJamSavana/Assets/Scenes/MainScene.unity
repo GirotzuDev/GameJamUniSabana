@@ -2011,6 +2011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planeta 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3472517678634158869, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
+      propertyPath: m_Radius
+      value: 8.48
+      objectReference: {fileID: 0}
     - target: {fileID: 3472517678634158870, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_Sprite
       value: 

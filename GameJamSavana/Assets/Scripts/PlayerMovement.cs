@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
             break;
 
             case PlayerState.onPlanet:
-                playerAnimator.SetTrigger("landing");
                 Debug.Log(plantingSliter.fillAmount);
                 StaminaUpdate(1);
                 if (Input.GetKeyDown(KeyCode.E))
@@ -93,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
                     //actualPlanet.SetGravityMode();
                     GameManager.Instance.planetLess-=1;
                     ameba.state = "planted";
+                    DisableTriggerColliders(actualPlanet.gameObject);
                     Destroy(actualPlanet);
                     state = PlayerState.notInPropultion;
                     
@@ -100,7 +100,18 @@ public class PlayerMovement : MonoBehaviour
             break;
         }
     }
+    void DisableTriggerColliders(GameObject gameObject)
+    {
+        Collider2D[] colliders = gameObject.GetComponents<Collider2D>();
 
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.isTrigger)
+            {
+                collider.enabled = false;
+            }
+        }
+    }
     private void FixedUpdate()
     {
         switch(state)
@@ -140,23 +151,28 @@ public class PlayerMovement : MonoBehaviour
             currentStamina-=col.gameObject.GetComponent<Asteroid>().damage;
             StaminaUpdate(-1);
         }
-        if (col.gameObject.tag == "Planet")
-        {   
-            Debug.Log("Cogere planeta");
-            actualPlanet = col.gameObject.GetComponent<Planet>();
-            Debug.Log(actualPlanet);
-            state = PlayerState.onPlanet;
-            ameba.state = "planting";
-        }
     }
 
-    void OnCollisionExit2D(Collision2D col)
+void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Planet"))
     {
-        if (col.gameObject.tag == "Planet")
-        {
-            state = PlayerState.notInPropultion;
-        }
+        playerAnimator.SetTrigger("landing");
+        Debug.Log("Cogere planeta");
+        actualPlanet = other.gameObject.GetComponent<Planet>();
+        Debug.Log(actualPlanet);
+        state = PlayerState.onPlanet;
+        ameba.state = "planting";
     }
+}
+
+void OnTriggerExit2D(Collider2D other)
+{
+    if (other.CompareTag("Planet"))
+    {
+        state = PlayerState.notInPropultion;
+    }
+}
 
 void OnTriggerStay2D(Collider2D other)
 {

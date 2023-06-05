@@ -22,8 +22,6 @@ public class BlackHole : CoreGravity
         if (other.CompareTag("Player"))//|| other.CompareTag("Asteroid"))
         {
             // Realizar acciones cuando el jugador colisione con el agujero negro
-            Debug.Log("muertiao");
-
             Rigidbody2D playerRigidbody = other.GetComponent<Rigidbody2D>();
 
             // 1. Establecer la inercia del jugador en cero
@@ -60,5 +58,6 @@ public class BlackHole : CoreGravity
     {
         yield return new WaitForSeconds(delay);
         playerObject.SetActive(false);
+        GameManager.Instance.gameStates = GameStates.gameOver;
     }
 }

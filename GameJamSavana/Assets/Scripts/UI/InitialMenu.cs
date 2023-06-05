@@ -25,7 +25,7 @@ public class InitialMenu : MonoBehaviour
     public void PlayGame()
     {
         // Cargar la escena del juego principal
-        SceneManager.LoadScene("IntegrationTestScene");
+        SceneManager.LoadScene("Assets/Scenes/MainScene.unity");
     }
 
     public void ShowOptions()

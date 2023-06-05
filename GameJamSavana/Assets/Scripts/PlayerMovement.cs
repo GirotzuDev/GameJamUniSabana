@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
             break;
 
             case PlayerState.onPlanet:
-                Debug.Log(plantingSliter.fillAmount);
                 StaminaUpdate(1);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if(plantingSliter.fillAmount>=1)
                 {
-                    Debug.Log("Setear gracity");
                     plantingSliter.fillAmount = 0;
                     plantingTime = 0;
                     //actualPlanet.SetGravityMode();
@@ -138,7 +136,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlantingUpdate(int scalar)
     {
-        Debug.Log("Planatando ando");
         plantingTime = plantingTime + (plantingRate * Time.deltaTime) * scalar;
         plantingTime = Mathf.Clamp(plantingTime, 0f, maxPlantingTime);
         plantingSliter.fillAmount = plantingTime / maxPlantingTime;
@@ -158,9 +155,7 @@ void OnTriggerEnter2D(Collider2D other)
     if (other.CompareTag("Planet"))
     {
         playerAnimator.SetTrigger("landing");
-        Debug.Log("Cogere planeta");
         actualPlanet = other.gameObject.GetComponent<Planet>();
-        Debug.Log(actualPlanet);
         state = PlayerState.onPlanet;
         ameba.state = "planting";
     }

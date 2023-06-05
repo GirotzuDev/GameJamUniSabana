@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CREDITS
+  m_Text: 
 --- !u!114 &4435593009798878823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +198,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4435593009495715143}
     m_Modifications:
+    - target: {fileID: 8025799286689568470, guid: 1784cce46509737439fe1241c96af853, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8025799287699890224, guid: 1784cce46509737439fe1241c96af853, type: 3}
       propertyPath: m_Name
       value: ButtonCreditsMC
@@ -396,6 +400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6638609371137604855, guid: 6002ffe2527e489499447cd59e85d0eb, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6002ffe2527e489499447cd59e85d0eb, type: 3}
 --- !u!224 &8695755868395043470 stripped
@@ -502,6 +510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonCreditsAZ
       objectReference: {fileID: 0}
+    - target: {fileID: 5852384797574186758, guid: 7e18fa2013097d647b1062d4a59b2381, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e18fa2013097d647b1062d4a59b2381, type: 3}
 --- !u!224 &8695755867969812641 stripped
@@ -516,6 +528,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4435593009495715143}
     m_Modifications:
+    - target: {fileID: 2295573320561042051, guid: da7d0a9beb4a10c4fb17de69f01de80c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2295573321431570984, guid: da7d0a9beb4a10c4fb17de69f01de80c, type: 3}
       propertyPath: m_Name
       value: ButtonCreditsJC
@@ -626,6 +642,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReturnRedButtonCM
       objectReference: {fileID: 0}
+    - target: {fileID: 3571183151237984244, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11ed4b0a1f575e479a6ba616c51af0d, type: 3}
+    - target: {fileID: 6778461098696479139, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11ed4b0a1f575e479a6ba616c51af0d, type: 3}
+    - target: {fileID: 6778461098696479139, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11ed4b0a1f575e479a6ba616c51af0d, type: 3}
+    - target: {fileID: 6778461098696479139, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11ed4b0a1f575e479a6ba616c51af0d, type: 3}
+    - target: {fileID: 6778461098696479139, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b11ed4b0a1f575e479a6ba616c51af0d, type: 3}
     - target: {fileID: 6778461098696479139, guid: 2c602072f6754bd4c9c3a8e23dfc6d8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

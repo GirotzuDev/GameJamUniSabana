@@ -49,11 +49,14 @@ public class GameManager : MonoBehaviour
         {
             gameStates = GameStates.gameOver;
             winPanel.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         if(gameStates == GameStates.gameOver )
         {
-            Debug.Log("Voy a perder");
             losePanel.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

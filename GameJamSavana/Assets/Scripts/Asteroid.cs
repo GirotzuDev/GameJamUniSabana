@@ -10,6 +10,7 @@ public class Asteroid : MonoBehaviour
     private int currentTargetIndex = 0;
     private Transform currentTarget;
     public float damage = 30f;
+    public AudioSource asteroidHit;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class Asteroid : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
+            asteroidHit.Play();
         }
     }
 

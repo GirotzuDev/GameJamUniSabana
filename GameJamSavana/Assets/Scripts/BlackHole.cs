@@ -7,6 +7,7 @@ public class BlackHole : CoreGravity
     [SerializeField] float customInfluenceRange;
     [SerializeField] float minCoreForce;
     [SerializeField] float maxCoreForce;
+    public AudioSource blackHoleSound;
 
     protected override void Start()
     {
@@ -22,8 +23,10 @@ public class BlackHole : CoreGravity
         if (other.CompareTag("Player"))//|| other.CompareTag("Asteroid"))
         {
             // Realizar acciones cuando el jugador colisione con el agujero negro
-            Rigidbody2D playerRigidbody = other.GetComponent<Rigidbody2D>();
+            blackHoleSound.Play();
 
+            Rigidbody2D playerRigidbody = other.GetComponent<Rigidbody2D>();
+            
             // 1. Establecer la inercia del jugador en cero
             playerRigidbody.velocity = Vector2.zero;
             playerRigidbody.angularVelocity = 0f;
@@ -38,7 +41,7 @@ public class BlackHole : CoreGravity
             StartCoroutine(ScalePlayer(other.transform));
 
             // 5. Desactivar el game object del jugador cuando la escala llegue a 0.1
-            StartCoroutine(DeactivatePlayer(other.gameObject, 1f));
+            StartCoroutine(DesactivatePlayer(other.gameObject, 1f));
         }
     }
 
@@ -46,7 +49,6 @@ public class BlackHole : CoreGravity
     {
         Vector3 targetScale = new Vector3(0.1f, 0.1f, 0.1f);
         float scaleSpeed = 0.5f;
-
         while (playerTransform.localScale.x > 0.1f)
         {
             playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, targetScale, Time.deltaTime * scaleSpeed);
@@ -54,10 +56,11 @@ public class BlackHole : CoreGravity
         }
     }
 
-    IEnumerator DeactivatePlayer(GameObject playerObject, float delay)
+    IEnumerator DesactivatePlayer(GameObject playerObject, float delay)
     {
         yield return new WaitForSeconds(delay);
         playerObject.SetActive(false);
         GameManager.Instance.gameStates = GameStates.gameOver;
+        blackHoleSound.Stop();
     }
 }

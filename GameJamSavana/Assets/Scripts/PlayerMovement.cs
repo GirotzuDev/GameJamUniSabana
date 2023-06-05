@@ -25,7 +25,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private AmebaLife ameba; 
 
-    public Animator playerAnimator; 
+    public Animator playerAnimator;
+    public AudioSource jetpackBoost;
+    public AudioSource powerUpJetpackBoost;
+    public AudioSource playerDeath;
+    public AudioSource playerHurt;
+    public AudioSource playerLanding;
+    public AudioSource playerSeending;
+    public AudioSource playerPukeBacteria;  
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.gameStates == GameStates.gameOver || GameManager.Instance.gameStates == GameStates.gameIdle) return;
         if(currentStamina<=0)
         {
+            playerDeath.Play();
             GameManager.Instance.gameStates = GameStates.gameOver;
            // GameObject.FindWithTag("GameOverPanel").gameObject.SetActive(true);
         }
@@ -57,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Space) || currentStamina <= 0)
                 {
                     state = PlayerState.notInPropultion;
+                    jetpackBoost.Stop();
                 }
                 StaminaUpdate(-1);
 
@@ -65,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.notInPropultion:
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    jetpackBoost.Play();
                     state = PlayerState.inPropulsion;
                 }
             break;
@@ -74,10 +84,13 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     StartPlanting(true);
+                    playerSeending.Play();
                 }
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     StartPlanting(false);
+                    playerSeending.Stop();
+                    powerUpJetpackBoost.Play();
                 }
                 if(planting)
                 {
@@ -93,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
                     DisableTriggerColliders(actualPlanet.gameObject);
                     Destroy(actualPlanet);
                     state = PlayerState.notInPropultion;
-                    
                 }
             break;
         }
@@ -145,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Asteroid")
         {
+            playerHurt.Play();
             currentStamina-=col.gameObject.GetComponent<Asteroid>().damage;
             StaminaUpdate(-1);
         }
@@ -154,6 +167,7 @@ void OnTriggerEnter2D(Collider2D other)
 {
     if (other.CompareTag("Planet"))
     {
+        playerPukeBacteria.Play();
         playerAnimator.SetTrigger("landing");
         actualPlanet = other.gameObject.GetComponent<Planet>();
         state = PlayerState.onPlanet;

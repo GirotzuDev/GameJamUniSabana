@@ -27,7 +27,7 @@ public class InitialMenu : MonoBehaviour
     {
         // Cargar la escena del juego principal
         playSound.Play();
-        SceneManager.LoadScene("Assets/Scenes/MainScene.unity");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void ShowOptions()

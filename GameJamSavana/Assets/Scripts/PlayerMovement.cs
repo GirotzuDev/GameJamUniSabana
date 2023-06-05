@@ -158,6 +158,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+void OnTriggerStay2D(Collider2D other)
+{
+    if (other.CompareTag("Planet"))
+    {
+        // Look at the planet
+        Vector3 direction = other.transform.position - transform.position;
+        direction.z = 0f; // Ensure the z-axis is 0 in 2D
+
+        if (direction != Vector3.zero)
+        {
+            // Rotate the player to face the planet
+            transform.up = -direction.normalized;
+        }
+    }
+}
     void StartPlanting(bool isPlanting)
     {
         plantingTime = 0;
@@ -168,6 +183,6 @@ public enum PlayerState
     inPropulsion,
     notInPropultion,
     onPlanet,
-    beenAbsorved
+    beenAbsorved,
 }
 }

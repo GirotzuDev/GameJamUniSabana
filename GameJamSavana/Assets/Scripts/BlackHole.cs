@@ -17,12 +17,16 @@ public class BlackHole : CoreGravity
         maxForce = maxCoreForce;
     }
 
+    void Update()
+    {
+        transform.Rotate(Vector3.forward, 50f * Time.deltaTime);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))//|| other.CompareTag("Asteroid"))
         {
             // Realizar acciones cuando el jugador colisione con el agujero negro
-            Debug.Log("muertiao");
 
             Rigidbody2D playerRigidbody = other.GetComponent<Rigidbody2D>();
 

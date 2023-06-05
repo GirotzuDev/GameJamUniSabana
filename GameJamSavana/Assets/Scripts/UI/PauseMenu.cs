@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public GameObject soundOptionsUI;
-    public GameObject generalOptionsUI;
+    //public GameObject soundOptionsUI;
+    //public GameObject generalOptionsUI;
     private bool isPaused = false;
 
     void Update()
@@ -44,14 +44,14 @@ public class PauseMenu : MonoBehaviour
     
     public void ShowSoundOptions()
     {
-        generalOptionsUI.SetActive(false);
-        soundOptionsUI.SetActive(true);
+        //generalOptionsUI.SetActive(false);
+        //soundOptionsUI.SetActive(true);
     }
 
     public void HideSoundOptions()
     {
-        generalOptionsUI.SetActive(true);
-        soundOptionsUI.SetActive(false);
+        //generalOptionsUI.SetActive(true);
+        //soundOptionsUI.SetActive(false);
     }
 
 }

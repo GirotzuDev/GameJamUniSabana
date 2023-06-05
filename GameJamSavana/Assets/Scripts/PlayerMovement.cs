@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 StaminaUpdate(1);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    actualPlanet.gameObject.SetActive(true);
                     StartPlanting(true);
                     playerLanding.Stop();
                     playerSeending.Play();
@@ -108,7 +109,9 @@ public class PlayerMovement : MonoBehaviour
                     DisableTriggerColliders(actualPlanet.gameObject);
                     plantingSliter.gameObject.SetActive(false);
                     state = PlayerState.notInPropultion;
-                    Destroy(actualPlanet);                    
+                    
+                    Destroy(actualPlanet);
+                                   
                 }
             break;
         }
@@ -190,6 +193,8 @@ void OnTriggerStay2D(Collider2D other)
 {
     if (other.CompareTag("Planet"))
     {
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
         // Look at the planet
         Vector3 direction = other.transform.position - transform.position;
         direction.z = 0f; // Ensure the z-axis is 0 in 2D

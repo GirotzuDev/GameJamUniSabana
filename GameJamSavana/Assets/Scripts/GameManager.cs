@@ -48,13 +48,13 @@ public class GameManager : MonoBehaviour
         if(planetLess <=0)
         {
             gameStates = GameStates.gameOver;
-            winPanel.SetActive(true);
+            SceneManager.LoadScene("Win");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         if(gameStates == GameStates.gameOver )
         {
-            losePanel.SetActive(true);
+            SceneManager.LoadScene("GameOver");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }

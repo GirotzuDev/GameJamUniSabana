@@ -2013,7 +2013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472517678634158869, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_Radius
-      value: 8.48
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 3472517678634158870, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_Sprite
@@ -2062,6 +2062,14 @@ PrefabInstance:
     - target: {fileID: 3472517678634158871, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861064968045104615, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
+      propertyPath: maxCoreForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861064968045104615, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
+      propertyPath: minCoreForce
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
@@ -3399,7 +3407,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 17.17
+  m_Radius: 11.9
 --- !u!1 &1028366039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6410329634875632036, guid: fea841dd5d85c7e4aa92e32ee58c508c, type: 3}
@@ -4071,6 +4079,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6410329634875632037, guid: fea841dd5d85c7e4aa92e32ee58c508c, type: 3}
   m_PrefabInstance: {fileID: 2091385352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1231598848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4665392025288845192, guid: 9d1d94e59b785db49a4d2cc966e8b4c3, type: 3}
+  m_PrefabInstance: {fileID: 268768881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1231598853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231598848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69c1c51cef87d3449e826eac54160c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1247262283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6410329634875632037, guid: fea841dd5d85c7e4aa92e32ee58c508c, type: 3}

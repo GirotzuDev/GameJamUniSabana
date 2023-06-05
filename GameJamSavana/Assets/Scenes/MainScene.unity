@@ -2021,7 +2021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472517678634158871, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.3
+      value: -10.23
       objectReference: {fileID: 0}
     - target: {fileID: 3472517678634158871, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3375,6 +3375,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6857699275675990361, guid: 6274b3ed2386fef4fbcb520425d39e05, type: 3}
   m_PrefabInstance: {fileID: 766812688}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1011821241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3472517678634158865, guid: 5727108f48c5fe14e8407a03109a55b3, type: 3}
+  m_PrefabInstance: {fileID: 541347939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1011821247
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011821241}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 17.17
 --- !u!1 &1028366039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6410329634875632036, guid: fea841dd5d85c7e4aa92e32ee58c508c, type: 3}

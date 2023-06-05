@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6050190142262042003}
   - component: {fileID: 2048295248}
   - component: {fileID: 2048295247}
+  - component: {fileID: 4435714284467836377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -112,6 +113,7 @@ MonoBehaviour:
   plantingRate: 10
   plantingTime: 0
   plantingSliter: {fileID: 0}
+  ameba: {fileID: 0}
   playerAnimator: {fileID: 0}
 --- !u!50 &6050190142262042001
 Rigidbody2D:
@@ -141,14 +143,14 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6050190142262042028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01759231, y: 4.9996805}
-  m_Size: {x: 8.333613, y: 11.243343}
+  m_Offset: {x: -0.017592508, y: -0.2819097}
+  m_Size: {x: 8.333613, y: 10.337931}
   m_Direction: 0
 --- !u!95 &2048295248
 Animator:
@@ -184,3 +186,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDuration: 60
+  state: 
+--- !u!61 &4435714284467836377
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050190142262042028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2640791}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.636352, y: 10.8}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.636352, y: 10.271841}
+  m_EdgeRadius: 0

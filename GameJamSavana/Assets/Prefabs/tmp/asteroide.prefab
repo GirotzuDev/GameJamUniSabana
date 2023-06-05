@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6857699275675990359}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7805875, w: 0.62504655}
+  m_LocalRotation: {x: 0, y: 0, z: 0.78058857, w: 0.62504524}
   m_LocalPosition: {x: 6.88, y: 3.14, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -100,15 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd973abfd7987d45b01cb182eae0f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  pointContainer: {fileID: 0}
   moveSpeed: 5
-  damage: 0
+  damage: 10
+  asteroidHit: {fileID: 0}
 --- !u!50 &6857699275675990362
 Rigidbody2D:
   serializedVersion: 4

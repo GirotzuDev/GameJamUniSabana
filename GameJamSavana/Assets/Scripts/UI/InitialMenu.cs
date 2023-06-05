@@ -10,6 +10,7 @@ public class InitialMenu : MonoBehaviour
     public GameObject creditsPanel;
     public GameObject mainPanel;
     public Slider volumeSlider;
+    public AudioSource playSound;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class InitialMenu : MonoBehaviour
     public void PlayGame()
     {
         // Cargar la escena del juego principal
+        playSound.Play();
         SceneManager.LoadScene("Assets/Scenes/MainScene.unity");
     }
 

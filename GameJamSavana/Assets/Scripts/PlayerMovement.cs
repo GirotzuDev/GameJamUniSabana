@@ -84,12 +84,12 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     StartPlanting(true);
+                    playerLanding.Stop();
                     playerSeending.Play();
                 }
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     StartPlanting(false);
-                    playerSeending.Stop();
                     powerUpJetpackBoost.Play();
                 }
                 if(planting)
@@ -103,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
                     //actualPlanet.SetGravityMode();
                     GameManager.Instance.planetLess-=1;
                     ameba.state = "planted";
+                    playerSeending.Stop();
+                    playerPukeBacteria.Play();
                     DisableTriggerColliders(actualPlanet.gameObject);
                     Destroy(actualPlanet);
                     state = PlayerState.notInPropultion;
@@ -167,7 +169,7 @@ void OnTriggerEnter2D(Collider2D other)
 {
     if (other.CompareTag("Planet"))
     {
-        playerPukeBacteria.Play();
+        playerLanding.Play();
         playerAnimator.SetTrigger("landing");
         actualPlanet = other.gameObject.GetComponent<Planet>();
         state = PlayerState.onPlanet;
@@ -190,7 +192,6 @@ void OnTriggerStay2D(Collider2D other)
         // Look at the planet
         Vector3 direction = other.transform.position - transform.position;
         direction.z = 0f; // Ensure the z-axis is 0 in 2D
-
         if (direction != Vector3.zero)
         {
             // Rotate the player to face the planet

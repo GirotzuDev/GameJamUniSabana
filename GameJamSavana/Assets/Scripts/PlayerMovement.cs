@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         staminaSlider = GameObject.Find("Stamina").GetComponent<Image>();
         currentStamina = maxStamina;
         staminaSlider.fillAmount = currentStamina;
-        plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
+        //plantingSliter = GameObject.Find("PlantingSliter").GetComponent<Image>();
         plantingTime = 0;
         ameba = gameObject.GetComponent<AmebaLife>();
         playerAnimator = GetComponent<Animator>(); 
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
                     GameManager.Instance.planetLess-=1;
                     ameba.state = "planted";
                     DisableTriggerColliders(actualPlanet.gameObject);
-                    Destroy(actualPlanet);
+                    plantingSliter.gameObject.SetActive(false);
                     state = PlayerState.notInPropultion;
                 }
             break;
@@ -202,6 +202,7 @@ void OnTriggerStay2D(Collider2D other)
     {
         plantingTime = 0;
         planting = isPlanting;
+        plantingSliter.gameObject.SetActive(true);
     }
 public enum PlayerState
 {
